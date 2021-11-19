@@ -58,7 +58,7 @@ const ProductSchema = new mongoose.Schema({
   location: String
 }, {timestamps: true})
 
-const Product = mongoose.model("Product", ProductSchema)
+const Products = mongoose.model("Products", ProductSchema)
 
 //////////////////////////////
 // Environment
@@ -103,7 +103,7 @@ app.get("/", (req, res) => {
 })
 
 // USER create route
-app.post('/', async (req, res) => {
+app.get('/test', async (req, res) => {
   const authCode = req.originalUrl.slice(req.originalUrl.indexOf('=')+1)
   try {
     // create a new user
@@ -148,7 +148,7 @@ app.put("/products/:id", async (req, res) => {
 // Destroy Route 
 app.delete("/products/:id", async (req, res) => {
   try {
-    // delete a products
+    // delete a product
     res.json(await Products.findByIdAndRemove(req.params.id));
   } catch (error) {
     res.status(400).json({ error });
