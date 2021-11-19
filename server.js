@@ -103,7 +103,8 @@ app.get("/", (req, res) => {
 })
 
 // USER create route
-app.get('/test', async (req, res) => {
+app.route('/test')
+.get(async (req, res) => {
   const authCode = req.originalUrl.slice(req.originalUrl.indexOf('=')+1)
   try {
     // create a new user
@@ -112,6 +113,7 @@ app.get('/test', async (req, res) => {
     res.status(400).json({ error });
   }
 })
+
 
 // PRODUCT index route
 app.get("/products", async (req, res) => {
