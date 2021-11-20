@@ -112,6 +112,7 @@ app.route('/test')
   } catch (error) {
     res.status(400).json({ error });
   }
+  next()
 })
 .get(async (req, res, next) => {
   res.send('nice')
