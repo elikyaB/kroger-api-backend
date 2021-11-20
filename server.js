@@ -113,7 +113,9 @@ app.route('/test')
     res.status(400).json({ error });
   }
 })
-
+.get(async (req, res) => {
+  res.send('nice')
+}
 
 // PRODUCT index route
 app.get("/products", async (req, res) => {
