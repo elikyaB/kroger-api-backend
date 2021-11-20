@@ -104,7 +104,7 @@ app.get("/", (req, res) => {
 
 // USER create route
 app.route('/test')
-.get(async (req, res) => {
+.get(async (req, res, next) => {
   const authCode = req.originalUrl.slice(req.originalUrl.indexOf('=')+1)
   try {
     // create a new user
@@ -113,7 +113,7 @@ app.route('/test')
     res.status(400).json({ error });
   }
 })
-.get(async (req, res) => {
+.get(async (req, res, next) => {
   res.send('nice')
 }
 
