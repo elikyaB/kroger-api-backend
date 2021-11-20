@@ -69,7 +69,7 @@ const clientId = process.env.CLIENT_ID
 const redirectUrl = process.env.REDIRECT_URL
 const clientSecret = process.env.CLIENT_SECRET
 
-const config = {apiBaseUrl, oauth2BaseUrl, clientId, clientSecret, redirectUrl}
+const config = [apiBaseUrl, oauth2BaseUrl, clientId, clientSecret, redirectUrl]
 
 ////////////////////////////////
 // Authorization
