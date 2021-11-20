@@ -69,6 +69,8 @@ const clientId = process.env.CLIENT_ID
 const redirectUrl = process.env.REDIRECT_URL
 const clientSecret = process.env.CLIENT_SECRET
 
+const config = {apiBaseUrl, oauth2BaseUrl, clientId, clientSecret, redirectUrl}
+
 ////////////////////////////////
 // Authorization
 ////////////////////////////////
@@ -99,12 +101,11 @@ function redirectToLogin() {
 // USER index route
 app.get("/", (req, res) => {
   // initialize OAuth
-  res.redirect(redirectToLogin())
+  res.json(config)
 })
 
 // USER create route
-app.route('/test')
-.get(async (req, res, next) => {
+app.get(async (req, res) => {
   const authCode = req.originalUrl.slice(req.originalUrl.indexOf('=')+1)
   try {
     // create a new user
@@ -112,11 +113,8 @@ app.route('/test')
   } catch (error) {
     res.status(400).json({ error });
   }
-  next()
 })
-.get(async (req, res, next) => {
-  res.send('nice')
-})
+
 
 // PRODUCT index route
 app.get("/products", async (req, res) => {
