@@ -115,7 +115,7 @@ app.route('/test')
 })
 .get(async (req, res, next) => {
   res.send('nice')
-}
+})
 
 // PRODUCT index route
 app.get("/products", async (req, res) => {
