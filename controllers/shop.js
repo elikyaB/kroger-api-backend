@@ -77,12 +77,7 @@ router.delete('/cart', async (req, res) => {
 
 /// getProduct
 router.get('/products', async (req, res) => {
-    res.json(await Product.find({}))
-})
-
-/// searchProduct
-router.post('/products', async (req, res) => {
-    res.json(await Product.find(req.body))
+    res.json(await Product.find(req.headers))
 })
 
 ////////////////////////////////
