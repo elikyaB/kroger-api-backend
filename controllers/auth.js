@@ -14,7 +14,7 @@ const router = express.Router()
 // ROUTES
 ////////////////////////////
 
-// The Signup Routes (Get => Form, Post => form submit)
+// POST USER
 // "/user/signup"
 router.post("/signup", async (req, res) => {
   // encrypt password
@@ -37,11 +37,11 @@ router.post("/signup", async (req, res) => {
     })
 })
 
-// The login Routes (Get => Form, Post => form submit)
+// GET USER
 // "/user/login"
-router.post("/login", async (req, res) => {
-  // destructure username and password from req.body
-  const { username, password } = req.body
+router.get("/login", async (req, res) => {
+  const username = req.headers.username
+  const password = req.headers.password
 
   // search for the user
   User.findOne({ username })
